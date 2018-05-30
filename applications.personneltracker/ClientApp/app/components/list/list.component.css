@@ -1,0 +1,514 @@
+﻿/*@charset "UTF-8";*/
+
+.lists > div:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.grid-container .no-grid {
+    /*background-color: #d2eac8;*/
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.grid-container div.required {
+    border: solid 1px #f00;
+}
+
+.grid-container > table > tbody > .selected-row, .GridSelectedRow {
+    background-color: #D3D3D3;
+    color: #485a4c;
+    text-align: left;
+    font-weight: bold;
+}
+
+.list-container {
+    border: solid 2px #337ab7;
+    border-radius: 5px;
+    /*background-color: hsl(207.7, 56.4%, 90.9%);*/
+    background: linear-gradient(#fff,#dbe9f5);
+    color: #000;
+    padding: 10px;
+    text-align: left;
+    box-shadow: #337ab7 2px 2px 5px;
+    position: relative;
+}
+
+.grid-container a {
+    cursor: pointer;
+}
+
+section.list-container footer {
+    text-align: right;
+}
+
+.grid-container > table, table.GridSmall, div.Grid {
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    font-style: normal;
+    /*margin-bottom: 5px;*/
+    width: 100%;
+    /*margin-bottom:10px;*/
+}
+
+table.GridSmall, div.GridSmall {
+    font-size: 8pt;
+}
+
+.grid-container > table > thead > tr {
+    display: none; /*commented for now until IE 11 is rolled out to all users*/
+}
+
+div.GridHeader {
+    display: none;
+}
+
+/* Move the following to appropriate media query section when IE 11 is rolled out to all users*/
+
+.grid-container > table > thead, .grid-container > table > tfoot {
+    background-color: #0c5ca0;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.grid-container > table thead th, .grid-container > table tfoot td, div.GridHeader > div {
+    border: none;
+    padding: 5px 5px 5px 5px;
+}
+
+.grid-container > table thead, div.GridHeader {
+    font-size: 12px;
+}
+
+    .grid-container > table thead a, div.GridHeader a {
+        text-decoration: none;
+        color:#fff;
+    }
+
+.grid-container > table > tbody > tr, .grid-container > table > tfoot > tr {
+    display: inline-block;
+    /*color: #485a4c;*/
+    /*padding-bottom: 5px;*/
+    padding-right: 5px;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+    border-bottom: solid 1px hsl(102.4, 44.7%, 93.1%);
+}
+
+.grid-container > table > tbody > tr {
+    background-color: #ffffff;
+}
+
+div.GridRow, div.GridAltRow {
+    color: #485a4c;
+    display: inline-block;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+}
+
+/*.grid-container > table tbody tr:nth-child(2n+2) {*/
+/*background-color: hsl(2.1, 100%, 95.3%);*/
+/*background-color:hsl(102.4, 44.7%, 93.1%);*/
+/*}*/
+
+.grid-container > table tbody > tr:hover {
+    background-color: #e9f2f9;
+    /*background-color: hsl(2.1, 100%, 97.3%);*/
+}
+
+.grid-container > table > tbody > tr > td, .grid-container > table > tfoot > tr > td {
+    display: block;
+    font-weight: bold;
+    width: 100%;
+    /*border-bottom: 1px solid #eee;*/
+    /*margin-bottom: 5px;*/
+    padding: 5px;
+}
+
+.grid-container > table tbody a {
+    font-size: 12px;
+}
+
+/*.grid-container > table tbody a:not(:last-child) {
+    padding-right:5px;
+    border-right:solid 1px #000;
+}*/
+/*.grid-container > table tbody a {
+    background-color: #337ab7;
+    color: #fff;
+    margin: 4px;
+    padding: 5px;
+    border-radius: 2px;
+}*/
+
+div.GridRow > div,
+div.GridAltRow > div {
+    /*border-bottom: 1px solid #eee;*/
+    display: block;
+    font-weight: bold;
+    /*margin-bottom: 5px;*/
+    padding: 5px;
+    width: 100%;
+}
+
+.grid-container > table > tbody > tr > td:before {
+    content: attr(data-title);
+    display: block;
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: normal;
+}
+
+div.GridRow > div:before,
+div.GridAltRow > div:before {
+    content: attr(data-title);
+    display: block;
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.list-container header {
+    /*color: #ff7d64;*/
+    color: #0c5ca0;
+    font-size: 12pt;
+    font-weight: bold;
+    /*background-color:hsl(208, 57%, 91%);*/
+    border-radius: 5px 5px 0 0;
+    padding-bottom: 10px;
+}
+
+.grid-container .pagination-container {
+    /*text-align: right;*/
+    /*padding: 5px;*/
+    border-bottom: solid 1px #d2eac8;
+    padding: 5px 0;
+    /*padding-top: 10px;*/
+    /*background-color:hsl(208, 57%, 91%);*/
+    /*background-color: hsl(2.1, 100%, 90.3%);*/
+    background-color: hsl(102.4, 44.7%, 90.1%);
+    /*margin-bottom: 10px;*/
+    color: hsl(104, 43%, 20%);
+}
+
+ul.pager-list {
+    padding-left: 0;
+    margin: 0;
+    display: -ms-flexbox;
+    display: flexbox;
+}
+
+.PagedList-pageCountAndLocation {
+    -ms-flex-order: -1;
+    margin-right: 5px;
+}
+
+ul.pager-list li {
+    list-style: none;
+    display: inline-block;
+}
+
+    ul.pager-list li a {
+        position: relative;
+        background-color: #337ab7;
+        padding: 5px 6px;
+        margin-left: -1px;
+        color: #fff;
+        text-decoration: none;
+        font-style: italic;
+        cursor: default;
+        border: solid 1px #337ab7;
+    }
+
+        ul.pager-list li a[data-action-page] {
+            border: solid 1px #337ab7;
+            background-color: #337ab7;
+            color: #fff;
+            margin-right: 5px;
+            font-style: normal;
+            cursor: pointer;
+        }
+
+    ul.pager-list li.active a {
+        background-color: #fff;
+        color: #000;
+        font-style: normal;
+    }
+
+.GridPager {
+    background-color: #ffffff;
+    border: none;
+    font-size: 10pt;
+    text-align: center;
+}
+
+    .GridPager > td, .GridPager > div {
+        border: solid 1px #d0d0d0;
+        border-left: none;
+        border-right: none;
+        padding: 0;
+        width: 100%;
+    }
+
+    .GridPager table {
+        border: none;
+        border-collapse: separate;
+        border-spacing: 2px;
+        font-size: 8pt;
+        margin: 0;
+    }
+
+        .GridPager table td {
+            padding: 2px;
+            margin: 2px;
+        }
+
+            .GridPager table td a {
+                background-color: #c0d1ad;
+                border: solid 1px #D6E0C9;
+                border-radius: 2px;
+                color: #000;
+                font-weight: bold;
+                outline: none;
+                padding: 2px 4px 2px 4px;
+                text-decoration: none;
+            }
+
+            .GridPager table td span {
+                background-color: #fff;
+                border: solid 1px #D6E0C9;
+                border-radius: 2px;
+                box-shadow: #D6E0C9 0 0 2px;
+                color: #000;
+                font-size: 9pt;
+                font-weight: bold;
+                padding: 2px 4px 2px 4px;
+            }
+
+    .GridPager .recordCount {
+        color: hsl(0, 0%, 40%);
+        font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
+        font-size: 7pt;
+        font-style: italic;
+        font-weight: bold;
+        padding: 2px;
+    }
+
+.sorted-ascending a {
+    display: inline-block;
+}
+
+.sorted-descending a {
+    display: inline-block;
+}
+
+    .sorted-descending a:before {
+        content: url('data:image/gif;base64,R0lGODlhCwAGAPABAMw0LwAAACH5BAUAAAEALAAAAAALAAYAAAINhI8QieGs3GtSnoqjLAA7'); /*../Images/ArrowDown.gif*/
+        display: inline-block;
+    }
+
+.sorted-ascending a:before {
+    content: url('data:image/gif;base64,R0lGODlhCwAHAPABAMw0LwAAACH5BAUAAAEALAAAAQALAAYAAAINjA2nCLnR4or00AvvLQA7') /*../Images/ArrowUp.gif*/;
+    display: inline-block;
+}
+
+/*
+span.sorted-descending:before,
+a.sorted-descending:before {
+    position: relative;
+    top: 1px;
+    display: block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    content: "\e094";
+    color: #fff;
+}
+
+span.sorted-ascending:before,
+a.sorted-ascending::before {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    content: "\e093";
+    color: #fff;
+}
+*/
+
+/*span.sorted-descending,
+a.sorted-descending {
+    background: url('data:image/gif;base64,R0lGODlhCwAGAPABAMw0LwAAACH5BAUAAAEALAAAAAALAAYAAAINhI8QieGs3GtSnoqjLAA7') no-repeat left;
+    padding-left:10px;
+}
+
+span.sorted-ascending,
+a.sorted-ascending {
+    background: url('data:image/gif;base64,R0lGODlhCwAHAPABAMw0LwAAACH5BAUAAAEALAAAAQALAAYAAAINjA2nCLnR4or00AvvLQA7') no-repeat left;
+    padding-left:10px;
+}*/
+/* Force table to not be like tables anymore */
+
+/*Small devices. Tablets (>= 768px */
+@media (min-width: 768px) {
+    .grid-container > table > tbody > tr {
+        display: inline-block;
+        width: auto;
+    }
+
+    div.GridRow, div.GridAltRow {
+        display: inline-block;
+        width: auto;
+    }
+
+        .grid-container > table > tbody > tr > td,
+        div.GridRow > td,
+        div.GridAltRow > td {
+            width: auto;
+        }
+}
+
+/*Medium devices. Desktops (>= 992px */
+@media (min-width: 992px) {
+    .grid-container > table, div.Grid {
+        display: table;
+    }
+
+        .grid-container > table > thead > tr, .grid-container > table > tfoot > tr, div.GridHeader {
+            display: table-row;
+        }
+
+    span.sortable-column {
+        color: hsl(208.7, 57.1%, 80%);
+    }
+
+    div.GridHeader > div {
+        display: table-cell;
+    }
+
+    /*.grid-container > table tbody tr.selected-row::after {
+            font-family: "Glyphicons Halflings";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 25px;
+            -webkit-font-smoothing: antialiased;
+            content: "\e072";
+            color: #fff;
+            vertical-align: text-bottom;
+        }*/
+
+    .grid-container > table > tbody > tr,
+    div.GridRow,
+    div.GridAltRow {
+        display: table-row;
+    }
+
+        .grid-container > table > tbody > tr > td,
+        .grid-container > table > tfoot > tr > td,
+        div.GridRow > div,
+        div.GridAltRow > div {
+            display: table-cell; /* commented for now until IE 11 is rolled out to all users */
+            font-weight: normal;
+            /*margin: 0;*/
+            padding: 5px;
+            width: auto;
+        }
+
+    .grid-container > table tbody > tr > td:before {
+        display: none;
+        content: '';
+        font-style: italic;
+        font-weight: normal;
+        left: 0;
+        white-space: normal;
+    }
+
+    div.GridRow > div:before,
+    div.GridAltRow > div:before {
+        content: '';
+        display: none;
+        font-style: italic;
+        font-weight: normal;
+        left: 0;
+        white-space: normal;
+    }
+
+    .GridRow > td, .GridAltRow > td, .GridRow > div, .GridAltRow > div {
+        border: solid 1px hsl(88.3, 28.1%, 50%);
+        border-left: solid 1px hsl(88.3, 28.1%, 85%);
+        border-right: solid 1px hsl(88.3, 28.1%, 85%);
+    }
+
+    .GridFooter {
+        background-color: #c0d1ad;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: left;
+    }
+
+        .GridFooter > td, .GridFooter > div {
+            border: solid 1px #d0d0d0;
+            border-left: none;
+            border-right: none;
+            padding: 5px;
+        }
+
+    .grid-container table th:first-child {
+        border-radius: 5px 0 0 0;
+    }
+
+    .grid-container table th:last-child {
+        border-radius: 0 5px 0 0;
+    }
+}
+/*Large devices. Desktops (>= 1200px */
+@media (min-width: 1200px) {
+}
+
+@media screen and (min-width: 1000px) {
+}
+
+.pager-container {
+    background-color: #3371b7;
+}
+
+.pager-list > li > a, .pager-list > li > span {
+    width: 100%;
+}
+
+.list-refresh {
+    opacity: .5;
+    pointer-events: none;
+}
+
+    .list-refresh .list-container {
+        background-image: url(../../../assets/images/loadbar.gif);
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+
+.grid-required-value-missing {
+    color: #a94442;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+}

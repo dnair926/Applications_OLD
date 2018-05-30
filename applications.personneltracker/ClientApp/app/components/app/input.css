@@ -1,0 +1,227 @@
+﻿input[type=text]::-ms-clear {
+    display: none;
+}
+
+.option-select {
+    padding: 2px;
+}
+
+label > input[type=radio], label > input[type=checkbox] {
+    margin-right: 2px;
+}
+
+.option-select label {
+    display: inline-block;
+    margin: 0;
+    font-weight: bold;
+    font-style: normal;
+}
+
+    .option-select label:not(:last-child) {
+        margin-right: 10px;
+    }
+
+.option-select-vertical label {
+    display: block;
+}
+
+label.check-box input {
+    margin-right: 5px;
+}
+
+.input-readonly, .aspNetDisabled {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 3px;
+    border: solid 1px #5eb4f7;
+    font-weight: bold;
+    font-size: 9pt;
+    display: inline-block;
+    background-color: hsl(0, 0%, 80%);
+    color: #000;
+    font-style: normal;
+}
+
+.display-v2h > div > div > label:not(.value-display), .display-h2v > div > div > label:not(.value-display), .display-horizontal > div > div > label:not(.value-display) {
+    font-weight: normal;
+    font-style: italic;
+}
+
+input[type=text], input[type=number], input[type=date], textarea, select, .option-select, .profile-card-icon, .value-display {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #555;
+    display: inline-block;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.42857143;
+    -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    max-width: 100% !important;
+    padding: 4px 10px;
+}
+
+span.value-display, label.value-display {
+    margin: 0;
+    background-color: #eee;
+    min-height: 30px;
+}
+
+input[type=text], input[type=number], input[type=date], textarea, select, .profile-card-icon {
+    height: 34px;
+}
+
+    input[type=text]:focus, input[type=date]:focus, textarea:focus, select:focus, .option-select:focus, span.value-display:hover {
+        box-shadow: 0 0 10px #ccc;
+    }
+
+
+.info-fields .value-display, .value-display .profile-card-icon, .grid-container table td .profile-card-icon {
+    height: auto;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: default;
+    border-radius: 0;
+    box-shadow: none;
+    /*margin:0;*/
+}
+
+.profile-card-icon {
+    cursor: default;
+}
+
+label.value-display {
+    cursor: not-allowed;
+}
+
+input.required, select.required, textarea.required, span.required, label.required:not(.value-display) {
+    border-color: #f00;
+}
+
+input[type=text]:focus, textarea:focus, select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+input.required:focus, select.required:focus, textarea.required:focus, span.required:hover {
+    border-color: #f00;
+    box-shadow: 0 0 10px #f00;
+}
+
+
+input[type=text]::-moz-placeholder, textarea::-moz-placeholder, select::-moz-placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+input[type=text]:-ms-input-placeholder, textarea:-ms-input-placeholder, select:-ms-input-placeholder {
+    color: #999;
+}
+
+input[type=text], input[type=number], textarea, select::-webkit-input-placeholder {
+    color: #999;
+}
+
+    input[type=text][disabled], textarea[disabled], select[disabled],
+    input[type=text][readonly], textarea[readonly], select[readonly],
+    fieldset[disabled] input[type=text], input[type=number], fieldset[disabled] textarea, fieldset[disabled] select {
+        background-color: #eee;
+        opacity: 1;
+    }
+
+    input[type=text][disabled], textarea[disabled], select[disabled],
+    fieldset[disabled] input[type=text], input[type=number], fieldset[disabled] textarea, fieldset[disabled] select {
+        cursor: not-allowed;
+    }
+
+        input[type=text][disabled]:hover:after, textarea[disabled]:hover:after, select[disabled]:hover:after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        input[type=text][disabled]:after, textarea[disabled]:after, select[disabled]:after {
+            background: #000;
+            border-radius: 8px 0 8px 0;
+            box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+            color: #fff;
+            content: attr(disableMessage);
+            margin: 5px 5px 0 15px;
+            opacity: 0;
+            padding: 3px 7px;
+            position: absolute;
+            visibility: hidden;
+            -moz-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+            max-width: 400px;
+        }
+
+textarea {
+    height: auto;
+}
+
+input[type=submit]:not([class]) {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    display: inline-block;
+    padding: 3px;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.4285;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-style: normal;
+}
+
+
+@media (min-width: 768px) {
+    input[type=text], input[type=number], textarea, select, .option-select {
+        max-width: none;
+    }
+
+        input[type=text][auto-complete], .standard-input {
+            width: 450px;
+        }
+
+    label.value-display {
+        min-width: 100px;
+    }
+
+    input[type=date] {
+        width: 100px;
+    }
+
+    span.value-display {
+        min-width: 100px;
+    }
+
+    textarea {
+        width: 450px;
+        height: 75px;
+    }
+}

@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ADORelationalMapper.cs" />
+    <Compile Remove="DataMapper.cs" />
+    <Compile Remove="IDataMapper.cs" />
+    <Compile Remove="IODataQueryBuilder.cs" />
+    <Compile Remove="ISqlCommandBuilder.cs" />
+    <Compile Remove="ISqlMapperConfiguration.cs" />
+    <Compile Remove="OdataMapperConfiguration.cs" />
+    <Compile Remove="ODataQueryBuilder.cs" />
+    <Compile Remove="ODataRelationalMapper.cs" />
+    <Compile Remove="SqlCommandBuilder.cs" />
+    <Compile Remove="SqlMapperConfiguration.cs" />
+    <Compile Remove="StandardRegistry.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="humanizer.core" Version="2.2.0" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+    <PackageReference Include="newtonsoft.json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Applications.Core\Applications.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NETCore.App" Version="2.0.7" />
+  </ItemGroup>
+
+</Project>

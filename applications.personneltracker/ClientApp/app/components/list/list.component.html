@@ -1,0 +1,153 @@
+﻿<div [class.list-refresh]="loading">
+    <!--List container-->
+    <section class="list-container" *ngIf="listInfo">
+        <!--List container header-->
+        <header>
+            <!--Show header text as anchor to collapse or show list, if the list is collapsible-->
+            <a data-toggle="collapse"
+               data-target='listInfo.listId'
+               [class.collapsed]="listInfo.autocollapseWhenEmpty && listInfo.pager?.totalItems == 0"
+               *ngIf="listInfo.collapsible">
+                <span class="glyphicon"></span>
+                {{listInfo.title}}
+            </a>
+
+            <!--Show static header text, if the list is NOT collapsible-->
+            <span *ngIf="!listInfo.collapsible">
+                {{listInfo.title}}
+                <span class="grid-title-special-note"
+                      *ngIf="listInfo.message">
+                    <br />{{listInfo.message}}
+                </span>
+            </span>
+
+            <!-- Show item count -->
+            <span class="badge"
+                  *ngIf="listInfo.showCount">
+                {{listInfo.pager?.totalItems}}
+            </span>
+
+            <!-- Show time the list was loaded and button to refresh list-->
+            <span class="pull-right"
+                  *ngIf="listInfo.allowManualRefresh">
+                <span class="small text-muted">
+                    Last Refreshed: <span [innerHTML]="listInfo.loadTime"></span>
+                </span>
+
+                <button (click)="refreshList()"
+                        class="btn btn-xs btn-primary">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+            </span>
+        </header>
+
+        <div class="grid-container">
+            <!--List filter form-->
+            <app-form [formInformation]="listInfo.filterFormInformation"
+                      *ngIf="listInfo.showFilterForm"></app-form>
+            <button class="btn btn-sm btn-info" (click)="refreshList()">Filter</button>
+
+            <table *ngIf="listInfo?.items?.length > 0">
+                <!--List header-->
+                <thead *ngIf="listInfo.showHeader">
+                    <tr>
+                        <!--Create header columns-->
+                        <th *ngFor="let column of listInfo.columns">
+                            <!--Show anchor, if column is sortable-->
+                            <a *ngIf="column.sortable"
+                               (click)="sort(column.sortColumnName)">
+                                <span class="glyphicon"
+                                      *ngIf="listInfo.sortExpression == column.sortColumnName"
+                                      [ngClass]="{'glyphicon-arrow-up': !listInfo.sortDirection || listInfo.sortDirection == 'Ascending', 'glyphicon-arrow-down': listInfo.sortDirection == 'Descending'}"></span>
+                                {{column.headerText}}
+                            </a>
+
+                            <!--Show static text, if column is NOT sortable-->
+                            <span *ngIf="!column.sortable">{{column.headerText}}</span>
+                        </th>
+
+                        <!--Edit link header column-->
+                        <th *ngIf="listInfo.showEdit"></th>
+
+                        <!--Remove link header column-->
+                        <th *ngIf="listInfo.showRemove"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Create rows-->
+                    <tr *ngFor="let item of listInfo.items">
+
+                        <!--Create data columns-->
+                        <td *ngFor="let column of listInfo.columns">
+                            <!--Show profile card icon, if profile info column-->
+                            <profile-card *ngIf="column.profileIdentifierColumn"
+                                          [profileId]="item[column.profileIdentifierColumn]"></profile-card>
+                            {{item[column.columnName]}}
+                        </td>
+
+                        <!--Edit link column-->
+                        <td *ngIf="item.showEdit">
+                            <a (click)="edit(item)">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Edit
+                            </a>
+                        </td>
+
+                        <!--Remove link column-->
+                        <td *ngIf="item.showRemove">
+                            <a (click)="remove(item)" class="text-danger">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Remove
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot *ngIf="listInfo.showFooter">
+                    <tr>
+                        <!--Create footer columns-->
+                        <td *ngFor="let column of listInfo.columns">
+                            <!--Show profile card icon, if profile info column-->
+                            <profile-card *ngIf="column.profileIdentifierColumn"
+                                          [profileId]="listInfo.footerItem[column.profileIdentifierColumn]"></profile-card>
+                            {{listInfo.footerItem[column.columnName]}}
+                        </td>
+
+                        <!--Edit link footer column-->
+                        <td *ngIf="item.showEdit"></td>
+
+                        <!--Remove link footer column-->
+                        <td *ngIf="item.showRemove"></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!--Pager-->
+            <pager (paging)="onPaging($event)"
+                   [pagerInfo]="listInfo.pager"
+                   *ngIf="listInfo?.items?.length > 0"></pager>
+
+            <!--List loading message, displayed when list is loading initially or when refreshed manually -->
+            <div *ngIf="loading && !listInfo.items"
+                 class="list-loading">
+                {{listInfo?.dataLoadingMessage || "Loading....."}}
+            </div>
+
+            <!--Empty list message, displayed after list loaded and no results returned-->
+            <div *ngIf="loaded && listInfo?.items?.length == 0"
+                 class="no-grid">
+                {{listInfo?.emptyDataMessage || "No items found."}}
+            </div>
+        </div>
+
+        <!--List container footer-->
+        <footer *ngIf="listInfo.showAddButton">
+            <!--Add Item button-->
+            <button class="btn btn-sm btn-success"
+                    (click)="add()">
+                <span class="glyphicon glyphicon-plus"></span>
+                {{listInfo?.addButtonText || "Add"}}
+            </button>
+        </footer>
+    </section>
+</div>
+{{ listInfo | json}}

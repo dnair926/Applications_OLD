@@ -1,0 +1,38 @@
+﻿<div class="pagination-container" *ngIf="pagerInfo">
+    {{pagerInfo.endPage > 1 ? "Page " + pagerInfo.currentPage + " of " + pagerInfo.totalPages + "." : ""}}
+    Showing {{pagerInfo.itemText || "items"}} {{pagerInfo.startItemIndex}} through {{pagerInfo.endItemIndex}} of {{pagerInfo.totalItems}}.
+    <div class="btn-group" role="group" aria-label="..." *ngIf="pagerInfo.endPage">
+        <button type="button"
+                class="btn btn-default btn-sm"
+                (click)="onPaging(1)"
+                *ngIf="pagerInfo.currentPage > 1 && pagerInfo.totalPages > 4">
+            First
+        </button>
+        <button type="button"
+                class="btn btn-default btn-sm"
+                (click)="onPaging(pagerInfo.currentPage - 1)"
+                *ngIf="pagerInfo.currentPage > 1 && pagerInfo.totalPages > 4">
+            Previous
+        </button>
+
+        <button *ngFor="let page of pagerInfo.pages" type="button"
+                class="btn btn-primary btn-sm"
+                [ngClass]="{'btn-primary': page == pagerInfo.currentPage, 'btn-default': page != pagerInfo.currentPage}"
+                (click)="page != pagerInfo.currentPage && onPaging(page)">
+            {{page}}
+        </button>
+
+        <button type="button"
+                class="btn btn-default btn-sm"
+                (click)="onPaging(pagerInfo.currentPage + 1)"
+                *ngIf="pagerInfo.currentPage < pagerInfo.totalPages && pagerInfo.totalPages > 4">
+            Next
+        </button>
+        <button type="button"
+                class="btn btn-default btn-sm"
+                (click)="onPaging(pagerInfo.totalPages)"
+                *ngIf="pagerInfo.currentPage < pagerInfo.totalPages && pagerInfo.totalPages > 4">
+            Last
+        </button>
+    </div>
+</div>

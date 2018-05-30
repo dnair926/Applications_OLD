@@ -1,0 +1,46 @@
+Form
+	Name (Unique identifier on the page)
+	Model (Model to bind to form)
+	Title (Form title to be displayed above the form)
+	Orientation (Form orientation. "vertical", "horizontal")
+	Fields (List of fields)
+	Hidden (Form is visible or hidden)
+Field 
+	Caption (Field caption)
+	FieldType (Type of field. textbox, dropdownlist, textarea etc.)
+	MaxCharLength (Maximum character length allowed in the field for free-form fields)
+	DisplayOrder (Field's order of display in the form)
+	Name (Field's unique identifier on the page)
+		Items (Items for list fields. e.g. Dropdownlist, Radiobuttonlist etc.)
+
+	Accessor (field's accessor for angular)
+	DescriptionAccessor (angular accessor if the field is disabled)
+	HelpInfoAccessor (angular accessor for help text)
+
+	Hidden (Indicator whether the field is hidden)
+	Required (Indicator whether the field is required)
+	Disabled (Indicator whether the field is disabled)
+
+
+Model property attributes
+        [Display(Name = "Prefix")] 
+		-> Field caption
+		-> Name: caption to be displayed for the form
+        [FormField(fieldType: FormFieldType.TextBox, DisplayOrder = 10)]
+		-> fieldType: type of field
+		-> DisplayOrder: Field's order of display in the form
+		-> HelpInfoPropertyName: name of property that has the help text for the field
+		-> Prefix: Information to be displayed before the field. e.g currency
+		-> Suffix: Information to be displayed after the field. e.g percentage sign
+		-> ShowClearButton: Indicator whether to show a button to clear the field.
+		-> DefaultValue: Value to be set if the field value is null
+        [ListFormField(fieldType: FormFieldType.Dropdown, itemsPropertyName: nameof(Prefixes), descriptionPropertyName: nameof(PrefixDescription), DisplayOrder = 0)]
+		-> Extends FormField
+		-> List field attribute
+		-> itemsPropertyName: name of property that has the list of items to be displayed in the field
+		-> descriptionPropertyName: name of property that has the description and which should be displayed on the form, if this field is disabled.
+        [NumberField(MinValue = 0, DisplayOrder = 30)]
+		-> Extends FormField
+		--> Number field attribute
+		-> MaxValue: Highest number allowed in the field
+		-> MinValue: Lowest number allowed in the field

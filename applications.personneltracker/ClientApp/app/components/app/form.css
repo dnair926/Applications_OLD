@@ -1,0 +1,113 @@
+﻿.popup-form input[type=text] {
+    width: 100%;
+}
+
+.display-group {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: solid 1px #0094ff;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+.display-static, .form-horizontal, .form-vertical {
+    display: block;
+    font-style: italic;
+}
+
+    .form-horizontal > div {
+        vertical-align: top;
+    }
+
+    .display-static > div, .form-vertical > div, .form-horizontal > div {
+        display: block;
+    }
+
+        .display-static > div > div, .form-vertical > div > div, .form-horizontal > div > div {
+            display: block;
+            padding: 2px;
+        }
+
+            .form-vertical > div > div:first-child > label {
+                text-align: left !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space. */
+            }
+
+    .form-vertical > div {
+        margin-bottom: 10px;
+        display: block;
+        text-align: left !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space. */
+    }
+
+        .form-vertical > div > div:first-child, .form-vertical > div > label:first-child {
+            max-width: none;
+        }
+
+.caption-col-md > div > div:first-child, .caption-col-lg > div > div:first-child, .caption-col-md > div > label:first-child, .caption-col-lg > div > label:first-child {
+    max-width: none;
+    text-align: left !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space. */
+}
+
+.form-vertical > div > div {
+    display: block;
+    margin-bottom: 2px;
+    text-align: left !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space.*/
+}
+
+/*Medium devices. Desktops (>= 992px */
+@media (min-width: 992px) {
+
+    .form-vertical, .form-horizontal {
+        display: block;
+    }
+
+        .form-vertical > div, .form-horizontal > div {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+            .form-vertical > div > div:first-child, .form-vertical > div > label:first-child {
+                max-width: 200px;
+                text-align: right !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space. */
+            }
+
+    .caption-col-md > div > div:first-child, .caption-col-md > div > label:first-child {
+        max-width: 400px;
+        text-align: right !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space. */
+    }
+
+    .caption-col-lg > div > div:first-child, .caption-col-lg > div > label:first-child {
+        max-width: none;
+        text-align: right !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space. */
+    }
+
+    .form-vertical > div > div {
+        display: inline-block;
+        margin-right: 1px;
+        vertical-align: top;
+    }
+
+    .form-horizontal > div > div {
+        display: block;
+    }
+
+    .form-vertical {
+        display: table;
+    }
+
+        .form-vertical > div {
+            display: table-row;
+        }
+
+            .form-vertical > div > div:first-child > label {
+                width: 100%;
+                text-align: right !important; /* To align the text in the div to the left, since, the div is expanded to the maximum available space. */
+            }
+
+            .form-vertical > div > div {
+                display: table-cell;
+                padding: 2px;
+                vertical-align: middle;
+            }
+}

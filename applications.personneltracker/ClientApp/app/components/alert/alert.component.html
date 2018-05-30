@@ -1,0 +1,6 @@
+﻿<div [class.alert-success]="!alert.alertType || alert.alertType == 'Success'" 
+     [class.alert-danger]="alert.alertType == 'Error'"
+     class='alert alert-dismissable' *ngIf="alert">
+    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+    {{alert.message || "No message"}}
+</div>

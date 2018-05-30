@@ -1,0 +1,18 @@
+﻿<span class="glyphicon glyphicon-user" 
+      bs-popover 
+      [dynamicTemplateUrl]="templateUrl" 
+      data-toggle="popover" 
+      data-placement="right" 
+      data-container="body"
+      *ngIf="!showLarge">
+</span>
+<button class="btn profile-card-icon" 
+        bs-popover 
+        [dynamicTemplateUrl]="templateUrl" 
+        type="button" 
+        data-toggle="popover" 
+        data-placement="right" 
+        data-container="body"
+        *ngIf="showLarge">
+    <span class="glyphicon glyphicon-user"></span>
+</button>

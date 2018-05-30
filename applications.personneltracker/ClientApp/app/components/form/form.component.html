@@ -1,0 +1,156 @@
+﻿<!--Information messages-->
+<div *ngIf="formInformation?.messages"
+     class="bg-info text-info">
+    <div class="text-info"
+         *ngFor="let message of formInformation?.messages">{{message}}</div>
+</div>
+
+<!--Warning messages-->
+<div *ngIf="formInformation?.warnings"
+     class="bg-warning text-warning">
+    <div class="text-warning"
+         *ngFor="let warning of formInformation?.warnings">{{warning}}</div>
+</div>
+
+<!--Form-->
+<div [class.form-vertical]="!formInformation?.orientation || formInformation?.orientation == 'Vertical'"
+     [class.form-horizontal]="formInformation?.orientation == 'Horizontal'"
+     [class.form-static]="formInformation?.orientation == 'Static'">
+
+    <ng-template ngFor let-field [ngForOf]="formInformation?.fields">
+        <!-- Field container -->
+        <div *ngIf="!field.hidden">
+
+            <!--Element Caption-->
+            <div>
+                <ng-template [ngIf]="field.fieldType != 'CheckBox'">
+                    {{field.caption}}
+                    <span class="glyphicon glyphicon-info-sign"
+                          *ngIf="field.helpInfoAccessor"
+                          (click)="showInfo(formInformation.model[field.helpInfoAccessor])"></span>
+                </ng-template>
+            </div>
+
+            <!-- Enabled Element -->
+            <div *ngIf="!field.disabled">
+
+                <!--Text box-->
+                <input *ngIf="field.fieldType == 'TextBox'"
+                       type="text"
+                       [class.required]="field.required"
+                       [(ngModel)]="formInformation.model[field.accessor]"
+                       [maxlength]="field.maxCharLength"
+                       (change)="modelChange($event, field.accessor)" />
+
+                <!--Text area-->
+                <textarea *ngIf="field.fieldType == 'MultilineTextBox'"
+                          [(ngModel)]="formInformation.model[field.accessor]"
+                          (change)="modelChange($event, field.accessor)"></textarea>
+
+                <!--Number-->
+                <input *ngIf="field.fieldType == 'Number'"
+                       type="number"
+                       [class.required]="field.required"
+                       [(ngModel)]="formInformation.model[field.accessor]"
+                       (change)="modelChange($event, field.accessor)" />
+
+                <!--Dropdown-->
+                <select *ngIf="field.fieldType == 'Dropdown'"
+                        [class.required]="field.required"
+                        [(ngModel)]="formInformation.model[field.accessor]"
+                        (change)="modelChange($event, field.accessor)">
+                    <option *ngFor="let item of formInformation.model[field.listItemsAccessor]"
+                            [value]="item.value">
+                        {{item.text}}
+                    </option>
+                </select>
+
+                <!--Radio button list-->
+                <span *ngIf="field.fieldType == 'RadiobuttonList'"
+                      class="option-select"
+                      [class.required]="field.required">
+                    <label *ngFor="let item of formInformation.model[field.listItemsAccessor]">
+                        <input [name]="field.name"
+                               type="radio"
+                               [checked]="formInformation.model[field.accessor] == item.value"
+                               [(ngModel)]="formInformation.model[field.accessor]"
+                               [value]="item.value"
+                               (change)="modelChange($event, field.accessor)" />
+                        {{item.text}}
+                    </label>
+                </span>
+
+                <!--Check box-->
+                <span *ngIf="field.fieldType == 'CheckBox'"
+                      class="option-select"
+                      [class.required]="field.required">
+                    <label>
+                        <input [name]="field.name"
+                               type="checkbox"
+                               [checked]="formInformation.model[field.accessor] == -1"
+                               [(ngModel)]="formInformation.model[field.accessor]"
+                               (change)="modelChange($event, field.accessor)" />
+                        {{field.caption}}
+                    </label>
+                </span>
+
+                <!--Check box list-->
+                <span *ngIf="field.fieldType == 'CheckBoxList'"
+                      class="option-select"
+                      [class.required]="field.required">
+                    <label *ngFor="let item of formInformation.model[field.listItemsAccessor]">
+                        <input [name]="field.name"
+                               type="checkbox"
+                               [checked]="formInformation.model[field.accessor]?.indexOf(item.value) > -1"
+                               [value]="item.value"
+                               (change)="multiselectValueChanged($event, field.accessor)" />
+                        {{item.text}}
+                    </label>
+                </span>
+
+            </div>
+
+            <!--Disabled element View-->
+            <div *ngIf="field.disabled">
+                <!--All elements except Check box-->
+                <label *ngIf="(['TextBox','MultilineTextBox','RadiobuttonList','Dropdown','Number'].indexOf(field.fieldType) > -1)"
+                       class="value-display">
+                    {{formInformation.model[field.descriptionAccessor]}}
+                </label>
+
+                <!--Check box -->
+                <label *ngIf="field.fieldType == 'CheckBox'"
+                       class="value-display">
+                    <span class="glyphicon glyphicon-unchecked"
+                          *ngIf="!formInformation.model[field.accessor]"></span>
+                    <span class="glyphicon glyphicon-check"
+                          *ngIf="formInformation.model[field.accessor]"></span>
+                    {{field.caption}}
+                </label>
+
+                <!--Check box list-->
+                <span *ngIf="field.fieldType == 'CheckBoxList'"
+                      class="option-select">
+                    <label *ngFor="let item of formInformation.model[field.listItemsAccessor]">
+                        <span class="glyphicon glyphicon-unchecked"
+                              *ngIf="formInformation.model[field.accessor]?.indexOf(item.value) == -1"></span>
+                        <span class="glyphicon glyphicon-check"
+                              *ngIf="formInformation.model[field.accessor]?.indexOf(item.value) > -1"></span>
+                        {{item.text}}
+                    </label>
+                </span>
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+<!--Form generation error-->
+<div *ngIf="formInformation && formInformation.fields?.length == 0">
+    <p class="bg-danger text-danger">There is an error with the model being bound to this form.</p>
+</div>
+
+<!--To be removed for prod-->
+{{formInformation | json}}
+
+<!--To be removed for prod-->
+{{formInformation.model | json}}

@@ -1,0 +1,5 @@
+﻿<div class="container alert-container" *ngIf="alerts">
+    <ng-template ngFor let-alert [ngForOf]="alerts">
+        <alert-view [alert]="alert"></alert-view>
+    </ng-template>
+</div>

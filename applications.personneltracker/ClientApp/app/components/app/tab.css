@@ -1,0 +1,13 @@
+﻿.tab-content {
+    padding: 10px;
+    background-color: hsl(0, 0%, 86.7%);
+}
+
+.nav-tabs li a {
+    background-color: #eee;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: hsl(0, 0%, 86.7%);
+    font-weight: bold;
+}

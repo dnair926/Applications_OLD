@@ -1,0 +1,14 @@
+﻿<div class="panel panel-info" *ngIf="pageModel">
+    <div class="panel-heading">
+        <h4>Person</h4>
+    </div>
+    <div class="panel-body">
+        <app-form [formInformation]="pageModel.formInformation" (modelChanged)="modelChanged($event)"></app-form>
+    </div>
+    <div class="panel-footer text-right">
+        <div class="btn-group btn-group-lg">
+            <button class="btn btn-success" (click)="save()">Save</button>
+            <button class="btn btn-danger" (click)="exit()">Exit</button>
+        </div>
+    </div>
+</div>

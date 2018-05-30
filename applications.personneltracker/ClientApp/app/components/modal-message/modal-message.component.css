@@ -1,0 +1,7 @@
+﻿[mat-dialog-title], [mat-dialog-content] {
+    border-bottom: 1px solid #e5e5e5;
+}
+[mat-dialog-actions] {
+    text-align: right;
+    display: block;
+}

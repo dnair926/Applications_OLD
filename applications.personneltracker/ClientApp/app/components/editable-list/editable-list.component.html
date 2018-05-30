@@ -1,0 +1,9 @@
+﻿<div class="panel">
+    <div class="panel-body">
+        <list [url]="apiUrl"
+              [listInfo]="listInformation"
+              *ngIf="listInformation"
+              (editItem)="onEditItem($event)"
+              (addItem)="onAddItem()"></list>
+    </div>
+</div>
